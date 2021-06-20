@@ -5,33 +5,18 @@
     <title>api-test-page</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
-
-
         var request = new XMLHttpRequest();
-
         $(function(){
             $('#button').click(function(){
                 request.open('GET','https://api.randomuser.me',true);
-        //request.open('GET','https://jsonplaceholder.typicode.com/users/1',true);
-        request.responseType = 'json';
-
-        request.onload = function(){
-            var data = this.response;
-            //data = JSON.parse(data);
-            //data = JSON.stringify(data);
-            
-            $('#names').append('<li>' + data.results[0].name.first + " " + data.results[0].name.last + '</li>');
-            //alert(data.results[0].name.first);
-            //data = JSON.stringify(data);
-            //alert(data);
-        };
-
-        request.send();
+                request.responseType = 'json';
+                request.onload = function(){
+                    var data = this.response;
+                    $('#names').append('<li>' + data.results[0].name.first + " " + data.results[0].name.last + '</li>');
+                };
+                request.send();
             });
         });
-
-        
- 
     </script>
   </head>
   <body>
